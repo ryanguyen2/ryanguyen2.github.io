@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { PROJECTS } from "./data/projects.js";   // adjust path if component is elsewhere
+import Featured from "./components/Featured.jsx";
 import "./styles.css";
 
 function ThemeSwitch({ className = "" }) {
@@ -261,6 +262,7 @@ export default function App() {
       <Hero />
       <About />
       <Projects/>
+      <Featured/>
     </main>
   );
 }
