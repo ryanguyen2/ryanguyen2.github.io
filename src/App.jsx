@@ -55,12 +55,41 @@ function Hero() {
   );
 }
 
-export default function App() {
+function About() {
   return (
-    <>
-      <main>
-        <Hero />
-      </main>
-    </>
+    <section id="about" className="about">
+      <div className="about-inner">
+        <div className="about-text">
+          <h2 className="section-title section-title--right">
+            ABOUT ME
+          </h2>
+
+          <p >
+            Hi, I’m Ryan! Currently based in Waterloo, ON, I’m a full-stack developer with a passion for creative design and clean user experiences. I love the balance of creativity and logic in software development - designing sleek, intuitive interfaces while also engineering the systems that bring them to life!
+          </p>
+          <p >
+           Outside of lecture hours, you'll find me playing basketball and volleyball, binge-watching shows, trying new recipies, and making Spotify playlists. Feel free to message me and I'd love to chat!
+          </p>
+        </div>
+
+        <div className="about-media">
+          <img
+            src="/icons/placeholder-about.jpg"
+            alt="Ryan with friends"
+            className="about-img"
+          />
+        </div>
+      </div>
+    </section>
   );
 }
+
+export default function App() {
+  return (
+    <main>
+      <Hero />
+      <About />
+    </main>
+  );
+}
+
