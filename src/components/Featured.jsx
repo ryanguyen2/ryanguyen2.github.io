@@ -6,7 +6,7 @@ export default function Featured() {
     <section id="media" className="media">
       <div className="media-inner">
         <h2 className="section-title">FEATURED</h2>
-        <p className="highlight">learn more about me!</p>
+        <p className="highlight">learn more about me through the internet!</p>
 
         <ul className="media-list">
           {MEDIA.map(item => (
@@ -36,21 +36,45 @@ export default function Featured() {
 
                 <p className="media-summary">{item.summary}</p>
 
-                <div className="media-link-row">
-                  <img
-                    className="media-icon"
-                    src="/icons/link.svg"
-                    alt=""
-                    aria-hidden="true"
-                  />
-                  <a
-                    className="media-link"
-                    href={item.link}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    READ HERE
-                  </a>
+                {}
+                <div className="media-links">
+                  {item.links
+                    ? item.links.map((l, i) => (
+                        <div key={i} className="media-link-row">
+                          <img
+                            className="media-icon"
+                            src="/icons/link.svg"
+                            alt=""
+                            aria-hidden="true"
+                          />
+                          <a
+                            className="media-link"
+                            href={l.url}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            {l.label}
+                          </a>
+                        </div>
+                      ))
+                    : (
+                      <div className="media-link-row">
+                        <img
+                          className="media-icon"
+                          src="/icons/link.svg"
+                          alt=""
+                          aria-hidden="true"
+                        />
+                        <a
+                          className="media-link"
+                          href={item.link}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          READ ARTICLE
+                        </a>
+                      </div>
+                    )}
                 </div>
               </div>
             </li>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { PROJECTS } from "./data/projects.js";   // adjust path if component is elsewhere
 import Featured from "./components/Featured.jsx";
+import Footer from "./components/Footer.jsx";
 import "./styles.css";
 
 function ThemeSwitch({ className = "" }) {
@@ -58,13 +59,13 @@ function Hero() {
             Computer Engineering @ University of Waterloo
           </p>
           <div className="icons">
-            <a className="iconBtn" href="https://github.com/ryanguyen2" target="_blank" rel="noreferrer" aria-label="GitHub">
+            <a className="icon-btn" href="https://github.com/ryanguyen2" target="_blank" rel="noreferrer" aria-label="GitHub">
               <img src="/icons/github.svg" alt="GitHub" />
             </a>
-            <a className="iconBtn" href="https://www.linkedin.com/in/ryanguyen2" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+            <a className="icon-btn" href="https://www.linkedin.com/in/ryanguyen2" target="_blank" rel="noreferrer" aria-label="LinkedIn">
               <img src="/icons/linkedin.svg" alt="LinkedIn" />
             </a>
-            <a className="iconBtn" href="mailto:rnguyen2102@gmail.com" aria-label="Email Ryan">
+            <a className="icon-btn" href="mailto:rnguyen2102@gmail.com" aria-label="Email Ryan">
               <img src="/icons/email.svg" alt="Email" />
             </a>
           </div>
@@ -99,28 +100,65 @@ function Hero() {
 }
 
 function About() {
+  const images = [
+    "/about/about1.jpg",
+    "/about/about2.jpg",
+    "/about/about3.jpg",
+    "/about/about4.jpg",
+    "/about/about5.png",
+    "/about/about6.jpg",
+    "/about/about7.png",
+    "/about/about8.jpg",
+    "/about/about9.jpg"
+  ]; 
+
+  const [idx, setIdx] = useState(0);
+  const prev = () => setIdx(i => (i - 1 + images.length) % images.length);
+  const next = () => setIdx(i => (i + 1) % images.length);
+
   return (
     <section id="about" className="about">
       <div className="about-inner">
         <div className="about-text">
-          <h2 className="section-title section-title--right">
-            ABOUT ME
-          </h2>
+          <h2 className="section-title section-title--right">ABOUT ME</h2>
 
-          <p >
-            Hi, I’m Ryan! Currently based in Waterloo, ON, I’m a full-stack developer with a passion for creative design and clean user experiences. I love the balance of creativity and logic in software development - designing sleek, intuitive interfaces while also engineering the systems that bring them to life!
+          <p>
+            Hi, I’m Ryan! Currently based in Waterloo, ON, I’m a full-stack developer with a passion
+            for creative design and clean user experiences. I love the balance of creativity and logic
+            in software development—designing sleek, intuitive interfaces while also engineering the systems
+            that bring them to life!
           </p>
-          <p >
-            Outside of lecture hours, you'll find me playing basketball and volleyball, binge-watching shows, trying new recipies, and making Spotify playlists. Feel free to message me and I'd love to chat!
+          <p>
+            Outside of lecture hours, you'll find me playing basketball and volleyball, binge-watching shows,
+            trying new recipes, and making Spotify playlists. Feel free to message me and I'd love to chat!
           </p>
         </div>
 
         <div className="about-media">
-          <img
-            src="/icons/placeholder-about.jpg"
-            alt="Ryan with friends"
-            className="about-img"
-          />
+          <div className="about-img-frame">
+            <img
+              className="about-img"
+              src={images[idx]}
+              srcSet={`${images[idx]} 2x`}  
+              alt={`About photo ${idx + 1} of ${images.length}`}
+            />
+            <button
+              type="button"
+              className="about-nav-btn about-nav-btn--prev"
+              aria-label="Previous photo"
+              onClick={prev}
+            >
+              ‹
+            </button>
+            <button
+              type="button"
+              className="about-nav-btn about-nav-btn--next"
+              aria-label="Next photo"
+              onClick={next}
+            >
+              ›
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -263,6 +301,7 @@ export default function App() {
       <About />
       <Projects/>
       <Featured/>
+      <Footer/>
     </main>
   );
 }

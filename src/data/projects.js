@@ -20,7 +20,7 @@ export const PROJECTS = [
     id: "brainbank",
     title: "🧠BrainBank",
     thumb: "/projects/brainbank-screenshot-1.jpg",
-    summary: "Chrome extension: highlight text, select an AI preset, and save your entry to a journal",
+    summary: "Chrome extension: highlight text, select an AI preset, and save to a journal",
     description:
       "MV3 extension with a small Express service. Capture highlights, apply templates, and save to a structured journal. Includes themes, keyboard shortcuts, and streak tracking.",
     tags: ["Chrome MV3", "React", "Express", "Node"],
