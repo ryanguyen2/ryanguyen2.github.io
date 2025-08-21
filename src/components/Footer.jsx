@@ -5,15 +5,15 @@ export default function Footer() {
     <footer className="site-footer" id="contact">
       {/* CTA block */}
       <div className="footer-cta">
-        <h2 className="footer-title">Let’s build something great.</h2>
+        <h2 className="footer-title">Let’s build something together.</h2>
         <p className="footer-subtitle">
-          I love full-stack development, clean design, and great team culture.
+          I love full-stack development, product design, and value team culture.
         </p>
 
         <div className="footer-actions">
           <a
             className="footer-btn"
-            href="mailto:rnguyen2102@gmail.com"
+            href="mailto:r27nguye@uwaterloo.ca"
             aria-label="Email Ryan"
           >
             Get in touch
@@ -59,7 +59,7 @@ export default function Footer() {
         </nav>
 
         <small className="footer-copy">
-          © {new Date().getFullYear()} Ryan Nguyen · Built with React
+          © {new Date().getFullYear()} Ryan Nguyen 😛 · Built with React
         </small>
       </div>
     </footer>
