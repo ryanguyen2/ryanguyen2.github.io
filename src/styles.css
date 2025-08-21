@@ -265,7 +265,7 @@ p {
   font-weight: 300;
 }
 
-/* container already exists: .about, .about-inner, .about-text */
+
 
 .about-img-frame {
   position: relative;
@@ -284,7 +284,7 @@ p {
   display: block;
 }
 
-/* nav arrows */
+
 .about-nav-btn {
   position: absolute;
   top: 50%;
@@ -293,7 +293,7 @@ p {
   height: 30px;
   border-radius: 50%;
   border: none;
-  background: rgba(0,0,0,0.30);  /* dark + semi-transparent */
+  background: rgba(0,0,0,0.30); 
   color: #fff;
   font-size: 22px;
   line-height: 1;
@@ -304,7 +304,7 @@ p {
 }
 
 .about-nav-btn:hover {
-  background: rgba(0,0,0,0.3);   /* darker on hover */
+  background: rgba(0,0,0,0.3);   
   transform: translateY(-50%) scale(1.05);
 }
 
@@ -535,12 +535,20 @@ html.dark .theme-icon {
 }
 
 
+
+.carousel {
+  position: relative;
+  display: inline-block;     
+}
+
+
 .carousel-frame {
-  aspect-ratio: 19 / 10;
-  background: #cdd3e1;
+  width: 100%;
+  aspect-ratio: 19 / 10;    
   background-size: cover;
   background-position: center;
   border-radius: 12px;
+  overflow: hidden;          
   border: 1px solid var(--border);
 }
 
@@ -551,10 +559,32 @@ html.dark .theme-icon {
   margin-top: 8px;
 }
 
-.carousel-count {
-  color: var(--muted);
-  font-size: 12px;
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,.8);
+  color: #fff;
+  border: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background .2s ease, transform .2s ease;
 }
+
+.carousel-arrow:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.carousel-arrow.left {
+  left: 12px;
+}
+
+.carousel-arrow.right {
+  right: 12px;
+}
+
 
 .icon-btn {
   width: 36px;
@@ -577,7 +607,6 @@ html.dark .theme-icon {
 .project-description {
   margin: 0;
   line-height: 1.7;
-  margin-bottom: 30px;
 }
 
 h3{
@@ -846,3 +875,39 @@ h3{
     gap: 10px;
   }
 }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);   
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);      
+}
+
+
+
+.reveal-up    { transform: translateY(16px); }
+.reveal-down  { transform: translateY(-16px); }
+.reveal-left  { transform: translateX(16px); }
+.reveal-right { transform: translateX(-16px); }
+
+.reveal-up.is-visible,
+.reveal-down.is-visible,
+.reveal-left.is-visible,
+.reveal-right.is-visible {
+  transform: translate(0,0);
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+

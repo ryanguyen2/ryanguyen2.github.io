@@ -1,8 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
-import { PROJECTS } from "./data/projects.js";   // adjust path if component is elsewhere
+import { PROJECTS } from "./data/projects.js";
 import Featured from "./components/Featured.jsx";
 import Footer from "./components/Footer.jsx";
+import Reveal from "./components/Reveal.jsx";
 import "./styles.css";
+
+
 
 function ThemeSwitch({ className = "" }) {
   const [isDark, setIsDark] = useState(() => {
@@ -30,7 +33,7 @@ function ThemeSwitch({ className = "" }) {
         role="switch"
         aria-checked={isDark}
         aria-label={`Toggle ${isDark ? "light" : "dark"} mode`}
-        onClick={() => setIsDark(d => !d)}
+        onClick={() => setIsDark((d) => !d)}
       >
         <span className="theme-thumb" />
       </button>
@@ -43,13 +46,10 @@ function ThemeSwitch({ className = "" }) {
 }
 
 
-
-
-/*hero section */
 function Hero() {
   return (
     <section className="hero" id="home">
-      <div className="hero-inner">
+      <Reveal className="hero-inner reveal-up" delay={80}>
         <div className="avatar-ring">
           <img src="/icons/profile.jpeg" alt="Portrait of Ryan Nguyen" className="avatar" />
         </div>
@@ -70,15 +70,10 @@ function Hero() {
             </a>
           </div>
         </div>
-      </div>
+      </Reveal>
+
       <div className="scroll-cue">
-        <svg
-          className="scroll-cue-icon"
-          viewBox="0 0 24 24"
-          width="40"
-          height="40"
-          aria-hidden="true"
-        >
+        <svg className="scroll-cue-icon" viewBox="0 0 24 24" width="40" height="40" aria-hidden="true">
           <polyline
             points="6,9 12,15 18,9"
             fill="none"
@@ -89,15 +84,10 @@ function Hero() {
           />
         </svg>
       </div>
-
-
-
-
     </section>
-
-
   );
 }
+
 
 function About() {
   const images = [
@@ -110,18 +100,17 @@ function About() {
     "/about/about7.png",
     "/about/about8.jpg",
     "/about/about9.jpg"
-  ]; 
+  ];
 
   const [idx, setIdx] = useState(0);
-  const prev = () => setIdx(i => (i - 1 + images.length) % images.length);
-  const next = () => setIdx(i => (i + 1) % images.length);
+  const prev = () => setIdx((i) => (i - 1 + images.length) % images.length);
+  const next = () => setIdx((i) => (i + 1) % images.length);
 
   return (
     <section id="about" className="about">
       <div className="about-inner">
-        <div className="about-text">
+        <Reveal className="about-text reveal-up" delay={60}>
           <h2 className="section-title section-title--right">ABOUT ME</h2>
-
           <p>
             Hi, I’m Ryan! Currently based in Waterloo, ON, I’m a full-stack developer with a passion
             for creative design and clean user experiences. I love the balance of creativity and logic
@@ -132,14 +121,14 @@ function About() {
             Outside of lecture hours, you'll find me playing basketball and volleyball, binge-watching shows,
             trying new recipes, and making Spotify playlists. Feel free to message me and I'd love to chat!
           </p>
-        </div>
+        </Reveal>
 
-        <div className="about-media">
+        <Reveal className="about-media reveal-left" delay={120}>
           <div className="about-img-frame">
             <img
               className="about-img"
               src={images[idx]}
-              srcSet={`${images[idx]} 2x`}  
+              srcSet={`${images[idx]} 2x`}
               alt={`About photo ${idx + 1} of ${images.length}`}
             />
             <button
@@ -159,12 +148,11 @@ function About() {
               ›
             </button>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
 }
-
 
 
 function Projects() {
@@ -174,14 +162,18 @@ function Projects() {
   return (
     <section id="projects" className="projects">
       <div className="projects-inner">
-        <h2 className="section-title">PROJECTS</h2>
-        <p className="highlight">click on any project to learn more about it!</p>
+        <Reveal className="reveal-up" delay={60}>
+          <h2 className="section-title">PROJECTS</h2>
+          <p className="highlight">click on any project to learn more about it!</p>
+        </Reveal>
 
         <div className="project-grid">
-          {PROJECTS.map((p) => (
-            <button
+          {PROJECTS.map((p, i) => (
+            <Reveal
               key={p.id}
-              className="project-card polaroid"
+              as="button"
+              className="project-card polaroid reveal-up"
+              delay={i * 80}
               onClick={(e) => {
                 lastFocus.current = e.currentTarget;
                 setOpenId(p.id);
@@ -203,7 +195,7 @@ function Projects() {
                   <span key={t} className="tag">{t}</span>
                 ))}
               </div>
-            </button>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -232,7 +224,6 @@ function ProjectModal({ project, onClose }) {
       if (e.key === "ArrowLeft") setIdx((i) => (i - 1 + project.images.length) % project.images.length);
     };
     window.addEventListener("keydown", onKey);
-    setTimeout(() => dialogRef.current?.querySelector(".modal-close")?.focus(), 0);
     return () => window.removeEventListener("keydown", onKey);
   }, [onClose, project.images.length]);
 
@@ -240,8 +231,6 @@ function ProjectModal({ project, onClose }) {
     <div role="dialog" aria-modal="true" className="modal" aria-labelledby={`project-${project.id}-title`}>
       <div className="modal-backdrop" onClick={onClose} />
       <div className="modal-panel" ref={dialogRef}>
-        <button className="modal-close" onClick={onClose} aria-label="Close">×</button>
-
         <div className="modal-body">
           <div className="carousel">
             <div
@@ -251,17 +240,35 @@ function ProjectModal({ project, onClose }) {
               aria-label={`${project.title} screenshot ${idx + 1} of ${project.images.length}`}
             />
             {project.images.length > 1 && (
-              <div className="carousel-controls">
-                <button className="icon-btn" aria-label="Previous" onClick={() => setIdx((i) => (i - 1 + project.images.length) % project.images.length)}>‹</button>
-                <span className="carousel-count">{idx + 1}/{project.images.length}</span>
-                <button className="icon-btn" aria-label="Next" onClick={() => setIdx((i) => (i + 1) % project.images.length)}>›</button>
-              </div>
+              <>
+                <button
+                  className="carousel-arrow left"
+                  aria-label="Previous"
+                  onClick={() =>
+                    setIdx((i) => (i - 1 + project.images.length) % project.images.length)
+                  }
+                >
+                  ‹
+                </button>
+                <button
+                  className="carousel-arrow right"
+                  aria-label="Next"
+                  onClick={() => setIdx((i) => (i + 1) % project.images.length)}
+                >
+                  ›
+                </button>
+              </>
             )}
           </div>
 
           <div className="modal-content">
             <h3 className="h3" id={`project-${project.id}-title`}>{project.title}</h3>
-            <p className="project-description">{project.description}</p>
+
+            <div className="project-description">
+              {Array.isArray(project.description)
+                ? project.description.map((para, i) => <p key={i}>{para}</p>)
+                : <p>{project.description}</p>}
+            </div>
 
             <div className="tag-list">
               {project.tags.map((t) => <span key={t} className="tag">{t}</span>)}
@@ -298,11 +305,10 @@ export default function App() {
         <ThemeSwitch />
       </div>
       <Hero />
-      <About />
-      <Projects/>
-      <Featured/>
-      <Footer/>
+      <Reveal><About /></Reveal>
+      <Reveal><Projects /></Reveal>
+      <Reveal><Featured /></Reveal>
+      <Footer />
     </main>
   );
 }
-
