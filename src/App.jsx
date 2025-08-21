@@ -6,7 +6,6 @@ import Reveal from "./components/Reveal.jsx";
 import "./styles.css";
 
 
-
 function ThemeSwitch({ className = "" }) {
   const [isDark, setIsDark] = useState(() => {
     const saved = localStorage.getItem("theme");
@@ -49,7 +48,7 @@ function ThemeSwitch({ className = "" }) {
 function Hero() {
   return (
     <section className="hero" id="home">
-      <Reveal className="hero-inner reveal-up" delay={80}>
+      <Reveal className="hero-inner reveal-up" delay={80} instant>
         <div className="avatar-ring">
           <img src="/icons/profile.jpeg" alt="Portrait of Ryan Nguyen" className="avatar" />
         </div>
@@ -63,7 +62,7 @@ function Hero() {
               <img src="/icons/github.svg" alt="GitHub" />
             </a>
             <a className="icon-btn" href="https://www.linkedin.com/in/ryanguyen2" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-              <img src="/icons/linkedin.svg" alt="LinkedIn" />
+              <img src="/icons/linkedin (1).svg" alt="LinkedIn" />
             </a>
             <a className="icon-btn" href="mailto:rnguyen2102@gmail.com" aria-label="Email Ryan">
               <img src="/icons/email.svg" alt="Email" />
@@ -224,7 +223,15 @@ function ProjectModal({ project, onClose }) {
       if (e.key === "ArrowLeft") setIdx((i) => (i - 1 + project.images.length) % project.images.length);
     };
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+
+    
+    const original = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = original;
+    };
   }, [onClose, project.images.length]);
 
   return (
@@ -304,9 +311,10 @@ export default function App() {
       <div className="theme-fixed">
         <ThemeSwitch />
       </div>
+
       <Hero />
-      <Reveal><About /></Reveal>
-      <Reveal><Projects /></Reveal>
+      <About />
+      <Projects />
       <Reveal><Featured /></Reveal>
       <Footer />
     </main>

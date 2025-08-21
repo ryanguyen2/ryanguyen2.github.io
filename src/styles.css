@@ -6,10 +6,16 @@
   --text: #000000;
   --brand: #2abcdd;
   --brand-strong: #1999b8; 
+  --strip: color-mix(in srgb, var(--brand) 6%, white);
   --muted: #5b6477;
   --border: #e6eaf1;
+  --polaroid-frame: 1px solid #eef1f5;
   --card: #f6f8fb;
+  --polaroid: ffffff;
+  --modal-back: color-mix(in srgb, var(--brand) 12%, white);
   --ring1: #3fd3e0;
+  --shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  --highlight: color-mix(in srgb, var(--brand) 20%, white);
 }
 
 html {
@@ -17,11 +23,16 @@ html {
 }
 
 html.dark {
-  --bg: #000000;
+  --bg:#0c0d0e;
   --text: #ecf2ff;
+  --strip: #192E33;
   --muted: #a9b4cf;
   --border: #1e2741;
-  --card: #0f1524;
+  --card: #181818;
+  --polaroid:  #181818;
+  --polaroid-frame: 1px solid rgb(41, 41, 41);
+  --shadow: 0 12px 40px rgba(231, 231, 231, 0.20);
+  --highlight: var(--strip);
 }
 
 
@@ -107,7 +118,7 @@ body {
 
 .avatar-ring:hover {
   transform: scale(1.02);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  box-shadow: var(--shadow);
 }
 
 .avatar {
@@ -139,7 +150,7 @@ body {
   padding: 5px 4px;
   border-radius: 5px;
   width: fit-content;
-  background: color-mix(in srgb, var(--brand) 20%, white);
+  background: var(--highlight);
   border: none;
 }
 
@@ -191,12 +202,12 @@ p {
 
 
 .about {
-  background: color-mix(in srgb, var(--brand) 6%, white);
   padding: 56px 0;
   margin-top: 30px;
   min-height: 500px;
   display: flex;
   justify-content: center;
+  background: var(--strip);
 }
 
 .about-inner {
@@ -416,8 +427,8 @@ html.dark .theme-icon {
 
 
 .polaroid {
-  background: #ffffff;
-  border: 1px solid #e6eaf1;
+  background: var(--polaroid);
+  border: var(--border);
   border-radius: 10px;
   box-shadow: 0 8px 18px rgba(2, 8, 23, 0.08);
   padding: 14px 14px 18px; 
@@ -429,7 +440,7 @@ html.dark .theme-icon {
 
 .polaroid:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 28px rgba(2, 8, 23, 0.12);
+  box-shadow: var(--shadow);
 }
 
 .project-title {
@@ -439,12 +450,16 @@ html.dark .theme-icon {
   color: var(--text);
 }
 
+
+.project-card.polaroid:hover {
+  transform: translateY(-6px);   /* subtle lift */
+}
 .polaroid-photo {
   aspect-ratio: 18 / 10; 
   background-size: cover;
   background-position: center;
   border-radius: 6px;
-  border: 1px solid #eef1f5;
+  border: var(--polaroid-frame);
   margin-inline: auto;
   width: 100%;           
   
@@ -472,16 +487,19 @@ html.dark .theme-icon {
   font-size: 12px;
   padding: 4px 8px;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--brand) 18%, white);
+  background: var(--highlight);
   color: var(--brand-strong);
-  border: 1px solid color-mix(in srgb, var(--brand) 24%, white);
+  border: var(--border);
 }
 
 
 .modal {
   position: fixed;
   inset: 0;
-  z-index: 100;
+    z-index: 2000; /* above everything */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal-backdrop {
@@ -642,7 +660,7 @@ h3{
   width: 100%;
   border: 0;
   padding: 12px 14px;
-  background: color-mix(in srgb, var(--brand) 12%, white);
+  background: var(--highlight);
   color: var(--text);
   cursor: pointer;
   font-weight: 600;
@@ -681,7 +699,7 @@ h3{
 
 .media-item:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(2, 8, 23, 0.12);
+  box-shadow: var(--shadow);
 
 }
 
@@ -758,7 +776,7 @@ h3{
 .site-footer {
   padding: 56px 0 28px;
   margin-top: 150px;
-  background: color-mix(in srgb, var(--brand) 6%, white);
+  background: var(--strip);
   color: var(--text);
 }
 
@@ -876,18 +894,19 @@ h3{
   }
 }
 
+
 .reveal {
   opacity: 0;
-  transform: translateY(40px);   
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: translateY(16px);
+  transition: opacity 400ms ease, transform 400ms ease;
 }
-
-.reveal-visible {
+.reveal.is-visible {
   opacity: 1;
-  transform: translateY(0);      
+  transform: none;          /
 }
 
 
+.reveal:not(.is-visible) { will-change: opacity, transform; }
 
 .reveal-up    { transform: translateY(16px); }
 .reveal-down  { transform: translateY(-16px); }

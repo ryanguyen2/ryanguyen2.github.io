@@ -46,7 +46,7 @@ export default function Footer() {
             aria-label="LinkedIn"
             title="LinkedIn"
           >
-            <img src="/icons/linkedin.svg" alt="" />
+            <img src="/icons/linkedin (1).svg" alt="" />
           </a>
           <a
             className="footer-icon"
