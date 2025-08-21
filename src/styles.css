@@ -9,9 +9,10 @@
   --strip: color-mix(in srgb, var(--brand) 6%, white);
   --muted: #5b6477;
   --border: #e6eaf1;
+  --footer-border: #e6eaf1;
   --polaroid-frame: 1px solid #eef1f5;
   --card: #f6f8fb;
-  --polaroid: ffffff;
+  --polaroid: #fdfdfd;
   --modal-back: color-mix(in srgb, var(--brand) 12%, white);
   --ring1: #3fd3e0;
   --shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
@@ -28,6 +29,7 @@ html.dark {
   --strip: #192E33;
   --muted: #a9b4cf;
   --border: #1e2741;
+  --footer-border: #a9b4cf3d;
   --card: #181818;
   --polaroid:  #181818;
   --polaroid-frame: 1px solid rgb(41, 41, 41);
@@ -231,6 +233,7 @@ p {
   letter-spacing: 1px;
   margin: 0 0 0px;
   color: var(--brand-strong);
+
 }
 
 .section-title--right {
@@ -716,7 +719,7 @@ h3{
   height: 100%;
   object-fit: cover;
   display: block;
-  cursor: pointer;
+  
 }
 
 .media-body { display: grid; gap: 6px; }
@@ -755,6 +758,7 @@ h3{
   color: var(--brand);
   margin-right: 20px;
 }
+
 
 .media-icon {
   width: 18px;
@@ -840,7 +844,7 @@ h3{
   width: min(1100px, 92%);
   margin: 24px auto 20px;
   border: none;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--footer-border);
 }
 
 
@@ -902,7 +906,7 @@ h3{
 }
 .reveal.is-visible {
   opacity: 1;
-  transform: none;          /
+  transform: none;          
 }
 
 

@@ -224,7 +224,7 @@ function ProjectModal({ project, onClose }) {
     };
     window.addEventListener("keydown", onKey);
 
-    
+
     const original = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
@@ -282,18 +282,18 @@ function ProjectModal({ project, onClose }) {
             </div>
 
             <div className="modal-links">
-              {project.links?.github && (
-                <a className="link-btn" href={project.links.github} target="_blank" rel="noreferrer" aria-label="GitHub">
-                  <img src="/icons/github.svg" alt="" aria-hidden="true" />
-                  <span>Code</span>
+              {project.links?.map((link, i) => (
+                <a
+                  key={i}
+                  className="link-btn"
+                  href={link.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img src={link.icon} alt="" aria-hidden="true" />
+                  <span>{link.label}</span>
                 </a>
-              )}
-              {project.links?.demo && (
-                <a className="link-btn" href={project.links.demo} target="_blank" rel="noreferrer" aria-label="Live demo">
-                  <img src="/icons/link.svg" alt="" aria-hidden="true" />
-                  <span>Live demo</span>
-                </a>
-              )}
+              ))}
             </div>
           </div>
         </div>
