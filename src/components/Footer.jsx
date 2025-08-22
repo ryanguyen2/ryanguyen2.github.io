@@ -3,7 +3,7 @@ import React from "react";
 export default function Footer() {
   return (
     <footer className="site-footer" id="contact">
-      {/* CTA block */}
+      
       <div className="footer-cta">
         <h2 className="footer-title">Let’s build something together.</h2>
         <p className="footer-subtitle">
@@ -22,10 +22,10 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* divider */}
+     
       <hr className="footer-divider" />
 
-      {/* bottom row */}
+    
       <div className="footer-bottom">
         <nav className="footer-social" aria-label="Social links">
           <a

@@ -17,7 +17,7 @@ export const MEDIA = [
     image: "/public/media/thespec.webp",
     links: [
       { label: "READ ARTICLE", url: "https://www.thestar.com/news/hamilton-region/ancaster-high-student-looking-to-solve-big-problems-through-tech/article_6fcdc61a-fd79-554c-bed1-18392fa3dfbe.html"},
-      { label: "READ NEWSPAPER", url: "https://example.com/alt" }
+      { label: "READ NEWSPAPER", url: "https://www.pressreader.com/canada/the-hamilton-spectator/20230711/281560885257173" }
     ]
   },
   {

@@ -11,6 +11,7 @@ export const PROJECTS = [
                 "Designed with a strong emphasis on user experience, the app features smooth transitions, responsive layouts, and interactive elements such as dynamic jerseys (that change given player input), team logos, and country flags. Errors are handled aswell."],
         tags: ["React", "HTML", "CSS", "REST API"],
         images: ["/projects/lestat-preview-1.png", "/projects/lestat-preview-2.png", "/projects/lestat-preview-3.png", "/projects/lestat-preview-4.png"],
+
         links: [
             { label: "Github", icon: "/icons/github.svg", url: "https://github.com/ryanguyen2/lestat" },
             { label: "Try it Yourself", icon: "/icons/link.svg", url: "https://ryanguyen2.github.io/lestat" }
@@ -21,7 +22,7 @@ export const PROJECTS = [
     {
         id: "brainbank",
         title: "🧠BrainBank",
-        thumb: "/projects/brainbank-screenshot-1.jpg",
+        thumb: "/projects/brainbank-screenshot-1-large.jpg",
         summary: "Chrome extension: highlight text, select an AI preset, and save to a journal",
         description:
             ["BrainBank is a Chrome side-panel extension that transforms the way you engage with text online. Highlight any passage, pick from an AI preset like ELI5 (explain-like-im-5), Skeptic, Researcher, Tutor, or Interviewer, and instantly receive a useful response.  Entries are saved into a personal journal (to look back at) and the generated output is synced across Chrome via \`chrome.storage.sync\`. Users can edit their UI through the Theme Studio and change their username and profile avatar.",
@@ -52,16 +53,16 @@ export const PROJECTS = [
     {
         id: "recipe-app",
         title: "🍜Recipe App",
-        thumb: "#",
+        thumb: "/projects/coming-soon.jfif",
         summary: "currently in the works... will be deployed soon.",
         description:
             "N/A",
         tags: ["MERN", "HTML", "CSS"],
-        images: ["#", "#", "#"],
-        links: {
-            github: "#",
-            demo: "#"
-        }
+        images: ["/projects/coming-soon.jfif"],
+        links: [
+            { label: "Github", icon: "/icons/github.svg", url: "#" },
+            { label: "Try it Yourself", icon: "/icons/link.svg", url: "#" }
+        ]
     },
     {
         id: "spineguard",
@@ -89,7 +90,7 @@ export const PROJECTS = [
             ],
         tags: ["C", "UART Communication", "STM32"],
         images: ["/projects/lumosense1.jpg", "/projects/lumosense2.png", "/projects/lumosense3.png", "/projects/lumosense4.png", "/projects/lumosense5.png"],
-                links: [
+        links: [
             { label: "Github", icon: "/icons/github.svg", url: "https://github.com/ryanguyen2/lumosense" },
             { label: "Design Document", icon: "/icons/link.svg", url: "https://github.com/ryanguyen2/lumosense/blob/main/Design%20Document.docx%20(1).pdf" }
         ]

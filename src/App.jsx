@@ -90,7 +90,7 @@ function Hero() {
 
 function About() {
   const images = [
-    "/about/about1.jpg",
+
     "/about/about2.jpg",
     "/about/about3.jpg",
     "/about/about4.jpg",
@@ -182,10 +182,18 @@ function Projects() {
             >
               <h3 className="project-title">{p.title}</h3>
 
-              <div
-                className={`polaroid-photo ${!p.thumb ? "photo-placeholder" : ""}`}
-                style={p.thumb ? { backgroundImage: `url(${p.thumb})` } : undefined}
-              />
+              <figure className="polaroid-photo">
+                <img
+                  className="polaroid-img"
+                  src={p.thumb2x || p.thumb}
+                  srcSet={p.thumb2x ? `${p.thumb} 1x, ${p.thumb2x} 2x` : undefined}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1000px) 45vw, 348px"
+                  alt={`${p.title} thumbnail`}
+                  loading="eager"
+                  decoding="auto"
+                  fetchpriority="high"
+                />
+              </figure>
 
               <p className="project-summary">{p.summary}</p>
 
@@ -212,9 +220,12 @@ function Projects() {
   );
 }
 
+
 function ProjectModal({ project, onClose }) {
   const dialogRef = useRef(null);
+  const contentRef = useRef(null);
   const [idx, setIdx] = useState(0);
+  const [showCue, setShowCue] = useState(true);
 
   useEffect(() => {
     const onKey = (e) => {
@@ -228,11 +239,30 @@ function ProjectModal({ project, onClose }) {
     const original = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
+
+    const panel = dialogRef.current;
+    const onScroll = () => {
+      if (!panel) return;
+      setShowCue(panel.scrollTop < 16);
+    };
+    panel?.addEventListener("scroll", onScroll);
+
     return () => {
       window.removeEventListener("keydown", onKey);
       document.body.style.overflow = original;
+      panel?.removeEventListener("scroll", onScroll);
     };
   }, [onClose, project.images.length]);
+
+  const scrollToContent = () => {
+    const panel = dialogRef.current;
+    if (panel && contentRef.current) {
+      panel.scrollTo({
+        top: contentRef.current.offsetTop - 8,
+        behavior: "smooth",
+      });
+    }
+  };
 
   return (
     <div role="dialog" aria-modal="true" className="modal" aria-labelledby={`project-${project.id}-title`}>
@@ -240,12 +270,20 @@ function ProjectModal({ project, onClose }) {
       <div className="modal-panel" ref={dialogRef}>
         <div className="modal-body">
           <div className="carousel">
-            <div
-              className="carousel-frame"
-              style={{ backgroundImage: `url(${project.images[idx]})` }}
-              role="img"
-              aria-label={`${project.title} screenshot ${idx + 1} of ${project.images.length}`}
-            />
+            <div className="carousel-frame">
+              <img
+                className="carousel-img"
+                src={project.images[idx]}
+                srcSet={
+                  project.images2x?.[idx]
+                    ? `${project.images[idx]} 1x, ${project.images2x[idx]} 2x`
+                    : undefined
+                }
+                alt={`${project.title} screenshot ${idx + 1} of ${project.images.length}`}
+                loading="eager"
+                decoding="async"
+              />
+            </div>
             {project.images.length > 1 && (
               <>
                 <button
@@ -268,7 +306,7 @@ function ProjectModal({ project, onClose }) {
             )}
           </div>
 
-          <div className="modal-content">
+          <div className="modal-content" ref={contentRef}>
             <h3 className="h3" id={`project-${project.id}-title`}>{project.title}</h3>
 
             <div className="project-description">
@@ -298,11 +336,33 @@ function ProjectModal({ project, onClose }) {
           </div>
         </div>
 
+
+        {showCue && (
+          <button
+            type="button"
+            className="modal-scroll-cue"
+            aria-label="Scroll for more details"
+            onClick={scrollToContent}
+          >
+            <svg className="modal-scroll-cue-icon" viewBox="0 0 24 24" width="25" height="25" aria-hidden="true">
+              <polyline
+                points="6,9 12,15 18,9"
+                fill="none"
+                stroke="#2ABCDD"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+        )}
+
         <button className="modal-back" onClick={onClose}>Back</button>
       </div>
     </div>
   );
 }
+
 
 
 export default function App() {

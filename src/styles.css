@@ -23,6 +23,10 @@ html {
   scroll-behavior: smooth;
 }
 
+
+
+
+
 html.dark {
   --bg:#0c0d0e;
   --text: #ecf2ff;
@@ -325,14 +329,6 @@ p {
 .about-nav-btn--prev { left: 12px; }
 .about-nav-btn--next { right: 12px; }
 
-@media (max-width: 640px) {
-  .about-nav-btn {
-    width: 32px;
-    height: 32px;
-    font-size: 18px;
-  }
-}
-
 
 
 .theme-fixed {
@@ -416,17 +412,6 @@ html.dark .theme-icon {
   margin-top: 40px;
 }
 
-@media (max-width: 1000px) {
-  .project-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 640px) {
-  .project-grid {
-    grid-template-columns: 1fr;
-  }
-}
 
 
 .polaroid {
@@ -455,17 +440,22 @@ html.dark .theme-icon {
 
 
 .project-card.polaroid:hover {
-  transform: translateY(-6px);   /* subtle lift */
+  transform: translateY(-6px);   
 }
 .polaroid-photo {
-  aspect-ratio: 18 / 10; 
-  background-size: cover;
-  background-position: center;
+  aspect-ratio: 18 / 10;          
   border-radius: 6px;
   border: var(--polaroid-frame);
+  overflow: hidden;
   margin-inline: auto;
-  width: 100%;           
-  
+  width: 100%;
+   background: var(--card);          
+}
+.polaroid-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 
@@ -499,7 +489,7 @@ html.dark .theme-icon {
 .modal {
   position: fixed;
   inset: 0;
-    z-index: 2000; /* above everything */
+    z-index: 2000; 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -518,8 +508,8 @@ html.dark .theme-icon {
   transform: translate(-50%, -50%); 
   
   width: 90%;                  
-  max-width: 80vw;
-  max-height: 90vh;
+  max-width: 70vw;
+  max-height: 85vh;
 
   background: var(--bg);
   color: var(--text);
@@ -544,16 +534,36 @@ html.dark .theme-icon {
 
 .modal-body {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 18px;
   padding: 18px;
 }
 
-@media (max-width: 900px) {
-  .modal-body {
-    grid-template-columns: 1fr;
-  }
+
+.modal-scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+  background: var(--polaroid);    
+  border: 2px solid #2ABCDD;
+  border-radius: 50%;             
+  padding: 3px;
+  cursor: pointer;
+  z-index: 5;
+  opacity: 0.95;
 }
+
+.modal-scroll-cue:focus-visible {
+  outline: 2px solid var(--brand-strong);
+  outline-offset: 3px;
+}
+
+.modal-scroll-cue-icon {
+  display: block;
+  animation: float-y 1.6s ease-in-out infinite;
+}
+
 
 
 
@@ -561,6 +571,16 @@ html.dark .theme-icon {
   position: relative;
   display: inline-block;     
 }
+
+
+.carousel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;   
+  display: block;
+  border-radius: 12px; 
+}
+
 
 
 .carousel-frame {
@@ -698,12 +718,11 @@ h3{
   align-items: start;
   padding: 10px;
   border-radius: 20px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
-
 .media-item:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow);
-
 }
 
 .media-thumb-frame {
@@ -766,15 +785,6 @@ h3{
   display: inline-block;
 }
 
-
-@media (max-width: 640px) {
-  .media-item {
-    grid-template-columns: 90px 1fr;
-    gap: 14px;
-  }
-  .media-thumb-frame { width: 90px; }
-  .media-title { font-size: 18px; }
-}
 
 
 .site-footer {
@@ -891,12 +901,6 @@ h3{
   font-weight: 300;
 }
 
-@media (max-width: 640px) {
-  .footer-bottom {
-    flex-direction: column;
-    gap: 10px;
-  }
-}
 
 
 .reveal {
@@ -922,15 +926,5 @@ h3{
 .reveal-left.is-visible,
 .reveal-right.is-visible {
   transform: translate(0,0);
-}
-
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal,
-  .reveal.is-visible {
-    opacity: 1;
-    transform: none !important;
-    transition: none !important;
-  }
 }
 
