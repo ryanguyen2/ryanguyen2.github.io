@@ -340,7 +340,7 @@ function ProjectModal({ project, onClose }) {
         {showCue && (
           <button
             type="button"
-            className="modal-scroll-cue"
+            className="modal-scroll-cue" 
             aria-label="Scroll for more details"
             onClick={scrollToContent}
           >

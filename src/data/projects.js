@@ -22,7 +22,7 @@ export const PROJECTS = [
     {
         id: "brainbank",
         title: "🧠BrainBank",
-        thumb: "/projects/brainbank-screenshot-1-large.jpg",
+        thumb: "/projects/brainbank-screenshot-1.jpg",
         summary: "Chrome extension: highlight text, select an AI preset, and save to a journal",
         description:
             ["BrainBank is a Chrome side-panel extension that transforms the way you engage with text online. Highlight any passage, pick from an AI preset like ELI5 (explain-like-im-5), Skeptic, Researcher, Tutor, or Interviewer, and instantly receive a useful response.  Entries are saved into a personal journal (to look back at) and the generated output is synced across Chrome via \`chrome.storage.sync\`. Users can edit their UI through the Theme Studio and change their username and profile avatar.",
