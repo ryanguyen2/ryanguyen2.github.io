@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -9,22 +8,56 @@
   <meta name="theme-color" content="#0ea5e9" />
   <link rel="icon" href="/favicon.ico" />
 </head>
-
 <body>
 
   <div id="particles-js"></div>
 
-  
   <div id="root"></div>
 
   <script type="module" src="/src/main.jsx"></script>
+
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
   <script>
+    (function () {
     
-    particlesJS.load("particles-js", "/particles.json", function () {
-      console.log("particles.js config loaded");
-    });
+      function scrollToTopNow() {
+        const root = document.documentElement;
+        const prev = root.style.scrollBehavior;   
+        root.style.scrollBehavior = "auto";
+        window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+        root.style.scrollBehavior = prev || "";
+      }
+
+      if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";       
+      }
+
+      window.addEventListener("load", scrollToTopNow, { once: true });
+      window.addEventListener("pageshow", (e) => {
+        if (e.persisted) scrollToTopNow();          
+      });
+      setTimeout(scrollToTopNow, 50);
+      setTimeout(scrollToTopNow, 300);
+
+      function bootParticles() {
+        if (!window.particlesJS) return;
+        particlesJS.load("particles-js", "/particles.json", function () {
+          requestAnimationFrame(() => window.dispatchEvent(new Event("resize")));
+          setTimeout(() => window.dispatchEvent(new Event("resize")), 300);
+        });
+      }
+
+      if (document.readyState === "complete") {
+        bootParticles();
+      } else {
+        window.addEventListener("load", bootParticles, { once: true });
+      }
+
+      window.addEventListener("orientationchange", () => {
+        setTimeout(() => window.dispatchEvent(new Event("resize")), 200);
+      });
+    })();
   </script>
 </body>
-
 </html>
