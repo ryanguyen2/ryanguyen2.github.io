@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
+/* variables */
 :root {
   --bg: #ffffff;
   --text: #000000;
@@ -22,6 +23,7 @@ html {
   scroll-behavior: smooth;
 }
 
+/* dark mode variables */
 html.dark {
   --bg: #0c0d0e;
   --text: #ecf2ff;
@@ -62,6 +64,7 @@ main {
 }
 
 
+/* hero section */
 .hero {
   min-height: 100svh;
   display: grid;
@@ -197,12 +200,13 @@ p {
   box-shadow: none;
   padding: 0;
   color: currentColor;
-  transition: transform 0.25s ease, opacity 0.25s ease;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
 }
 
 .icon-btn:hover {
   transform: translateY(-2px) scale(1.05);
-  opacity: 0.85;
+  filter: brightness(1.03);
+  box-shadow: 0 10px 22px rgba(2, 8, 23, 0.12);
 }
 
 .icons img {
@@ -211,7 +215,7 @@ p {
   display: block;
 }
 
-
+/* particles */
 #particles-js {
   position: fixed;
   inset: 0;
@@ -233,7 +237,7 @@ p {
 }
 
 
-
+/* about section */
 .about {
   padding: 56px 0;
   margin-top: 30px;
@@ -348,7 +352,7 @@ p {
 }
 
 
-
+/* theme switch */
 .theme-fixed {
   position: fixed;
   top: 12px;
@@ -411,15 +415,13 @@ html.dark .theme-icon {
   color: #c4ccda;
 }
 
-/* ===================== PROJECTS ===================== */
-
+/* projects section*/
 .projects {
   padding: 56px 0;
   margin-top: 100px;
   background: var(--bg);
-  /* occlude particles after hero */
   position: relative;
-  z-index: 1;
+  z-index: 3;
 }
 
 .projects-inner {
@@ -505,22 +507,21 @@ html.dark .theme-icon {
   border: var(--border);
 }
 
-
-
 .modal {
   position: fixed;
   inset: 0;
-  z-index: 2000;
+  z-index: 9999; 
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .modal-backdrop {
-  position: absolute;
+  position: fixed; 
   inset: 0;
   background: rgba(0, 0, 0, 0.55);
 }
+
 
 .modal-panel {
   position: fixed;
@@ -657,7 +658,7 @@ html.dark .theme-icon {
 }
 
 .project-description {
-  margin: 0;
+  margin: 0 0 10px 0;
   line-height: 1.7;
 }
 
@@ -701,7 +702,7 @@ h3 {
   border-top: 1px solid var(--border);
 }
 
-
+/* media section */
 .media {
   padding: 56px 0;
   margin-top: 70px;
@@ -801,7 +802,7 @@ h3 {
   display: inline-block;
 }
 
-
+/* footer section */
 .site-footer {
   padding: 56px 0 28px;
   margin-top: 150px;
@@ -916,6 +917,7 @@ h3 {
   font-weight: 300;
 }
 
+/* reveal animation/effect/transition */
 .reveal {
   opacity: 0;
   transform: translateY(16px);
@@ -953,6 +955,8 @@ h3 {
 .reveal-right.is-visible {
   transform: translate(0, 0);
 }
+
+/* media queries */
 
 /*mobile/phone styles*/
 @media (max-width: 767px) {
