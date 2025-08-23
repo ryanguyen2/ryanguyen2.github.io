@@ -961,7 +961,7 @@ h3 {
 /*mobile/phone styles*/
 @media (max-width: 767px) {
     :root {
-    --highlight: #21d3ff49;
+    --highlight: #D4F2F8;
   }
   
   .about{
