@@ -1155,6 +1155,17 @@ h3 {
   .section-title--right::after {
     margin-left: 0;
   }
+  
+}
+
+@media (min-width: 1000px) and (max-width: 1440px) {
+  .about {
+    padding-block: 40px;  
+    min-height: 420px;    
+  }
+  .about-inner {
+    gap: 22px;           
+  }
 }
 
 
