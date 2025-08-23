@@ -23,7 +23,7 @@ export default function About() {
         <Reveal className="about-text reveal-up" delay={60}>
           <h2 className="section-title section-title--right">ABOUT ME</h2>
           <p>
-            Hi, I’m Ryan! Currently based in Waterloo, ON, I’m a Computer Engineering Student with a passion for full-stack development, creative design and clean user
+            Hi, I’m Ryan! Currently based in Waterloo, ON, I’m a CE student interested in fullstack dev, creative design and clean user
             experiences. I love the balance of creativity and logic in software
             development—designing sleek, intuitive interfaces while also
             engineering the systems that bring them to life!
