@@ -960,6 +960,9 @@ h3 {
 
 /*mobile/phone styles*/
 @media (max-width: 767px) {
+    :root {
+    --highlight: color-mix(in srgb, var(--brand) 40%, white);
+  }
 
   .hero-inner,
   .about-inner,
@@ -1120,6 +1123,7 @@ h3 {
     display: flex;
     flex-direction: column;
   }
+  
 }
 
 
