@@ -14,7 +14,7 @@ export const MEDIA = [
     date: "July 2023",
     summary:
       "'Ancaster High Student looking to solve big problems through tech' - article written by Kate McCullough (The Hamilton Spectator)",
-    image: "/public/media/thespec.webp",
+    image: "/media/thespec.webp",
     links: [
       { label: "READ ARTICLE", url: "https://www.thestar.com/news/hamilton-region/ancaster-high-student-looking-to-solve-big-problems-through-tech/article_6fcdc61a-fd79-554c-bed1-18392fa3dfbe.html"},
       { label: "READ NEWSPAPER", url: "https://www.pressreader.com/canada/the-hamilton-spectator/20230711/281560885257173" }
@@ -26,7 +26,7 @@ export const MEDIA = [
     date: "May 2023",
     summary:
       "'Ancaster High Student Organizes ‘Tech Hours’ Event for Secondary Students' - article written by the Hamilton Wentworth District School Board",
-    image: "public/media/hwdsb-article.jpg",
+    image: "/media/hwdsb-article.jpg",
     link: "https://www.hwdsb.on.ca/blog/ancaster-high-student-tech-hours/"
   }
 ];
