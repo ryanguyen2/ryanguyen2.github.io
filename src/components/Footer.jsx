@@ -59,7 +59,7 @@ export default function Footer() {
         </nav>
 
         <small className="footer-copy">
-          © {new Date().getFullYear()} Ryan Nguyen 😛 · Built with React
+          © {new Date().getFullYear()} Ryan Nguyen 😛 · Built by me using React
         </small>
       </div>
     </footer>

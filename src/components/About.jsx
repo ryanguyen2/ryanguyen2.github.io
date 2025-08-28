@@ -3,7 +3,7 @@ import Reveal from "./Reveal.jsx";
 
 export default function About() {
   const images = [
-    "/about/about2.jpg",
+    "/about/about1v2.jpg",
     "/about/about3.jpg",
     "/about/about4.jpg",
     "/about/about5.png",
