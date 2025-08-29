@@ -328,7 +328,7 @@ p {
   height: 30px;
   border-radius: 50%;
   border: none;
-  background: rgba(0, 0, 0, 0.30);
+  background: rgba(0, 0, 0, 0.50);
   color: #fff;
   font-size: 22px;
   line-height: 1;
@@ -336,6 +336,7 @@ p {
   place-items: center;
   cursor: pointer;
   transition: background 0.2s ease, transform 0.2s ease;
+
 }
 
 .about-nav-btn:hover {
