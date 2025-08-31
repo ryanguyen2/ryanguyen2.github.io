@@ -27,7 +27,7 @@ export const PROJECTS = [
         description:
             ["BrainBank is a Chrome side-panel extension that transforms the way you engage with text online. Highlight any passage, pick from an AI preset like ELI5 (explain-like-im-5), Skeptic, Researcher, Tutor, or Interviewer, and instantly receive a useful response.  Entries are saved into a personal journal (to look back at) and the generated output is synced across Chrome via \`chrome.storage.sync\`. Users can edit their UI through the Theme Studio and change their username and profile avatar.",
                 "The backend is powered by Node.js (Express) and integrates with the OpenAI API. The extension is deployed with Render for backend hosting and error handling (rate limits, invalid keys), while the frontend runs natively inside Chrome via Manifest V3 and the side_panel API"],
-        tags: ["Chrome MV3", "React", "Express", "Node"],
+        tags: ["Chrome MV3", "JavaScript", "Express", "Node"],
         images: ["/projects/brainbank-screenshot-1.jpg", "/projects/brainbank-screenshot-2.jpg", "/projects/brainbank-screenshot-3.jpg", "/projects/brainbank-screenshot-4.jpg", "/projects/brainbank-screenshot-5.jpg"],
         links: [
             { label: "Github", icon: "/icons/github.svg", url: "https://github.com/ryanguyen2/brainbank" },
@@ -52,16 +52,16 @@ export const PROJECTS = [
     },
     {
         id: "recipe-app",
-        title: "🍜Recipe App",
-        thumb: "/projects/coming-soon.jfif",
-        summary: "currently in the works... will be deployed soon.",
+        title: "🍜Simmer",
+        thumb: "/projects/s1.png",
+        summary: "An Instagram-inspired social media platform for home-cooks",
         description:
-            "N/A",
-        tags: ["MERN", "HTML", "CSS"],
-        images: ["/projects/coming-soon.jfif"],
+            ["Note: This project is in it's first version, only as a front-end demo. The back-end is currently in the works :)", "Simmer is a social cooking web app inspired by Instagram where users share recipes as posts (with ingredients, steps, tags, and multiple images) and quick 24-hour stories. It features a recipe feed, profiles, discover, suggested recipes, likes, saves, and a scrollable comments section. Built entirely with React (Vite) and styled with custom CSS, the app simulates backend functionality using localStorage for posts, users, and stories. Users can upload images, create posts and stories, and switch/reset demo accounts."],
+        tags: ["MERN", "HTML", "CSS", "Vite"],
+        images: ["/projects/s1.png", "/projects/s2.png", "/projects/s3.png", "/projects/s4.png", "/projects/s5.png", "/projects/s6.png"],
         links: [
-            { label: "Github", icon: "/icons/github.svg", url: "#" },
-            { label: "Try it Yourself", icon: "/icons/link.svg", url: "#" }
+            { label: "Github", icon: "/icons/github.svg", url: "https://github.com/ryanguyen2/simmer" },
+            { label: "Demo", icon: "/icons/link.svg", url: "https://www.youtube.com/watch?v=gnRiBb1_8aI" }
         ]
     },
     {

@@ -3,11 +3,11 @@ import Reveal from "./Reveal.jsx";
 
 export default function About() {
   const images = [
-    "/about/about1v2.jpg",
+    "/about/about6.jpg",
     "/about/about3.jpg",
+    "/about/about1v2.jpg",
     "/about/about4.jpg",
     "/about/about5.png",
-    "/about/about6.jpg",
     "/about/about7.png",
     "/about/about8.jpg",
     "/about/about9.jpg",
@@ -30,7 +30,7 @@ export default function About() {
           </p>
           <p>
             Outside of lecture hours, you'll find me playing basketball and
-            volleyball, binge-watching shows, trying new recipes, and making
+            volleyball, binge-watching shows, trying new recipes in the kitchen, and making
             Spotify playlists. Feel free to message me and I'd love to chat!
           </p>
         </Reveal>

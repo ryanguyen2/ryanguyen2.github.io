@@ -1,7 +1,7 @@
 export const MEDIA = [
   {
     id: "uw-daily-2024-09",
-    title: "University of Waterloo Daily News",
+    title: "University of Waterloo News Article",
     date: "November 2024",
     summary:
       "'Rogers scholarships help make students' dreams come true' - article written by Claire Mastrangelo (Office of Advancement)",
